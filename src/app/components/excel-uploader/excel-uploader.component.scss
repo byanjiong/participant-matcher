@@ -1,0 +1,45 @@
+
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjusts the spacing between columns */
+}
+
+.column {
+  padding: 8px;
+  flex: 1; /* Each column takes equal space */
+  min-width: 300px; /* Adjust the minimum width as needed */
+  max-width: 33%; /* Maximum width to ensure 3 columns layout */
+}
+
+.container-a {
+  display: flex;
+}
+
+.column-min {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+
+
+.column-flex {
+  flex-grow: 1; /* Takes up remaining space */
+}
+
+
+//   .left-button {
+//   }
+
+//   .right-button {
+//   }
+.table-container {
+  max-height: 300px;
+  overflow-y: auto;
+  /* Enables vertical scrolling */
+  width: 100%;
+  /* Adjust width as needed */
+}

@@ -1,0 +1,23 @@
+
+.main-container {
+    padding:8px;
+
+}
+
+.logs-container {
+    max-height: 400px;
+    width: 100%;
+    min-height: 100px;
+    overflow-y: auto;
+    background-color: lightgray;
+}
+
+.log-bg {
+    padding-left: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.log-e {
+    background-color: palevioletred;
+}

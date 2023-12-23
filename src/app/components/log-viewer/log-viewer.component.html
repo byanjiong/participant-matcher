@@ -1,0 +1,9 @@
+<div class="main-container">
+  <p>系统信息：</p>
+  <div class="logs-container">
+    <div class="log-bg log-{{ log.type }}" *ngFor="let log of logs">
+      {{ log.msg }}
+    </div>
+
+  </div>
+</div>

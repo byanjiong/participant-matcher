@@ -1,0 +1,49 @@
+
+<div class="container-a">
+  <div class="column-min">
+    <div class="column" >
+      <p>输入匹配表</p>
+      <input type="file" #mappingFileInput hidden (change)="handleMappingFile($event)" accept=".xlsx, .xls">
+      <button mat-raised-button color="primary" class="middle-button" type="button" (click)="mappingFileInput.click()" [disabled]="filenameMapping !==''">
+        Attach Mapping File
+      </button>
+      <div *ngIf="!filenameMapping">未输入文件</div>
+      <div *ngIf="filenameMapping">已输入文件：{{filenameMapping}}</div>
+      <button mat-raised-button color="secondary" class="middle-button" type="button" (click)="showDialogMapping()" [disabled]="!filenameMapping">
+        查看
+      </button>
+    </div>
+    <div class="column">
+      <div *ngIf="filenameMapping">
+        <p>输入主表</p>
+        <input type="file" #fileInput1 hidden (change)="processFile($event, 1)" accept=".xlsx, .xls">
+        <button mat-raised-button color="primary" class="left-button" type="button" (click)="fileInput1.click()" [disabled]="filenameFile1 !== ''">
+          Attach Primary File
+        </button>
+        <div *ngIf="!filenameFile1">未输入文件</div>
+        <div *ngIf="filenameFile1">已输入文件：{{filenameFile1}}</div>  
+      </div>
+    </div>
+    <div class="column">
+      <div *ngIf="filenameFile1">
+        <p>输入次表</p>
+        <input type="file" #fileInput2 hidden (change)="processFile($event, 2)" accept=".xlsx, .xls">
+        <button mat-raised-button color="primary" class="right-button" type="button" (click)="fileInput2.click()" [disabled]="filenameFile2 !== ''">
+          Attach Secondary File
+        </button>
+        <div *ngIf="!filenameFile2">未输入文件</div>
+        <div *ngIf="filenameFile2">已输入文件：{{filenameFile2}}</div>  
+      </div>
+    </div>
+
+
+  </div>
+  <div class="column-flex">
+    <app-log-viewer></app-log-viewer>
+  </div>
+</div>
+
+
+  <div>
+    Mapping data: {{ mappingData }}
+  </div>

@@ -1,0 +1,25 @@
+<div class="table-container">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Field Column -->
+    <ng-container matColumnDef="field">
+        <th mat-header-cell *matHeaderCellDef> Field </th>
+        <td mat-cell *matCellDef="let element"> {{element.field}} </td>
+    </ng-container>
+
+    <!-- Main Header Column -->
+    <ng-container matColumnDef="mainHeader">
+        <th mat-header-cell *matHeaderCellDef> Primary </th>
+        <td mat-cell *matCellDef="let element"> {{element.mainHeader || '?'}} </td>
+    </ng-container>
+
+    <!-- Secondary Header Column -->
+    <ng-container matColumnDef="secondaryHeader">
+        <th mat-header-cell *matHeaderCellDef> Secondary </th>
+        <td mat-cell *matCellDef="let element"> {{element.secondaryHeader || '?'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>

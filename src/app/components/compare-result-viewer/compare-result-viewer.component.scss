@@ -1,0 +1,134 @@
+.empty-container {
+  display: flex;
+  justify-content: center;
+  /* Horizontally center the content */
+  align-items: center;
+  /* Vertically center the content */
+  min-height: 300px;
+  width: 100%;
+  background-color: lightpink;
+}
+
+.output-container {
+  display: flex;
+  justify-content: center;
+  /* Horizontally center the content */
+  align-items: center;
+  /* Vertically center the content */
+  min-height: 100px;
+  width: 100%;
+  background-color: goldenrod;
+}
+
+
+.mainTable {
+  margin: 20px;
+  min-width: 600px;
+
+}
+
+.mgn-lft {
+  margin-left: 8px;
+}
+
+table,
+th,
+td {
+  padding: 8px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td.noPadding {
+  padding: 0px;
+}
+
+.inline {
+  padding: 8px;
+  display: inline-block;
+}
+
+.counter {
+  padding: 8px;
+  display: inline-block;
+  border: 1px solid black ;
+}
+
+.warning-bg {
+  background-color: palevioletred;
+}
+
+.suggestion-bg {
+  background-color: lightyellow;
+}
+
+.suggestion-bg.confirm {
+  background-color: greenyellow;
+}
+
+.suggestion-bg.reject {
+  background-color: lightgrey;
+}
+
+.positive-vlow {
+  background-color: chocolate;
+  color: white;
+}
+
+.positive-low {
+  background-color:  lightsalmon;
+  color: black;
+}
+
+.positive-mid {
+  background-color: yellow;
+  color: black;
+}
+
+.positive-high {
+  background-color: lightgreen;
+  color: black;
+}
+
+.positive-vhigh {
+  background-color: green;
+  color: white;
+}
+
+.negative {
+  background-color: red;
+}
+
+
+.reject {
+  .positive-vlow {
+    background-color: rgb(114, 114, 114);
+    color: white;
+  }
+  
+  .positive-low {
+    background-color:  rgb(160, 160, 160);
+    color: black;
+  }
+  
+  .positive-mid {
+    background-color: rgb(197, 197, 197);
+    color: black;
+  }
+  
+  .positive-high {
+    background-color: rgb(177, 177, 177);
+    color: black;
+  }
+  
+  .positive-vhigh {
+    background-color: rgb(109, 109, 109);
+    color: white;
+  }
+  
+  .negative {
+    background-color: rgb(71, 71, 71);
+    color: white;
+  }
+  
+}

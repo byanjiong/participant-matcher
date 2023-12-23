@@ -1,0 +1,102 @@
+
+<div class="empty-container" *ngIf="!compareStarted">
+  <button mat-raised-button color="primary" type="button" (click)="compare()" [disabled]="pcs.primaryParticipants.length === 0 || pcs.secondaryParticipants.length === 0">
+    开始比配
+  </button>
+
+</div>
+
+
+<table *ngIf="compareStarted" class="mainTable">
+  <thead>
+    <tr>
+      <th>次表学员</th>
+      <th>排除匹配</th>
+      <th>匹配结果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Iterate over CompareRecords -->
+    <tr *ngFor="let record of compareRecords">
+      <td>
+        <div class="inline mat-body mgn-lft">
+          {{ record.sourceParticipant.ID }}
+        </div>
+        
+        <div class="inline mat-body mgn-lft">
+          {{ record.sourceParticipant.chineseName }}
+        </div>
+        
+        <div class="counter">
+          {{ record.sourceParticipant.attendanceCount }}
+        </div>
+      </td>
+      <td>
+        <button mat-icon-button color="error" (click)="onRejectMatches(record)" [disabled]="!record.matches.length">
+          <mat-icon>compare_arrow</mat-icon>
+        </button>
+      </td>
+      <td class="noPadding">
+        
+          <div class="warning-bg" *ngIf="record.alerts.length">
+            <mat-checkbox checked="true" disabled="true"></mat-checkbox>
+
+            <div class="inline mat-subtitle-1">
+              注意：找不到比配的学员，但却注明有参与课程。将输出报告，并且移除所有课程。
+            </div>
+          </div>
+        
+          <div class="warning-bg" *ngIf="record.rejectMatches">
+            <mat-checkbox checked="true" disabled="true"></mat-checkbox>
+
+            <div class="inline mat-subtitle-1">
+              注意：排除所有匹配选项。将输出报告，并且移除所有课程。
+            </div>
+          </div>
+
+          <ng-container *ngIf="!record.rejectMatches">
+            <div class="suggestion-bg" [ngClass]="{'confirm': match.userConfirm, 'reject': match.userReject}" *ngFor="let match of record.matches">
+              <!-- <button mat-icon-button color="primary" (click)="onUserReject(match)">
+                <mat-icon>delete</mat-icon>
+              </button> -->
+  
+              <mat-checkbox [(ngModel)]="match.userConfirm" (change)="changeUserConfirm(record, match)"></mat-checkbox>
+  
+              <div class="inline positive-{{ match.matchGroup }} mat-subtitle-1">{{ match.matchScore }}</div>
+              <div class="inline negative mat-subtitle-1" *ngIf="match.rejectSore > 0" matTooltip="性别不匹配">{{ match.rejectSore }}</div>
+              <div class="inline mat-body mgn-lft">{{ match.participant.ID }} {{ match.participant.chineseName }}</div>
+              <div class="counter mgn-lft">
+                {{ match.participant.attendanceCount }}
+              </div>
+      
+  
+  
+              <div class="inline negative mat-subtitle-1 mgn-lft" *ngIf="match.attendanceDiff !== 0" matTooltip="课程次数不比配">
+                {{match.attendanceDiff > 0 ? '+' : ''}} {{ match.attendanceDiff }}
+              </div>
+              <div class="inline negative mat-subtitle-1" *ngIf="!match.attendanceCorrect" matTooltip="课程不比配！">
+                [ X ]
+              </div>
+  
+              <button mat-icon-button color="primary" (click)="openDialog(match.participant, record.sourceParticipant)">
+                <mat-icon>compare_arrow</mat-icon>
+              </button>
+  
+            </div>
+
+          </ng-container>
+
+          
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="output-container" *ngIf="compareStarted">
+  <button mat-raised-button color="primary" type="button" (click)="downloadExcelFile()" [disabled]="pcs.primaryParticipants.length === 0 || pcs.secondaryParticipants.length === 0">
+    导出数据
+  </button>
+
+</div>
